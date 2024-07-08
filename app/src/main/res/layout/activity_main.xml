@@ -27,17 +27,18 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.search.SearchBar
-                android:id="@+id/searchView"
+                android:id="@+id/searchBar"
                 android:layout_width="390dp"
                 android:layout_height="wrap_content"
                 />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.search.SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="search_name"
-            app:layout_anchor="@id/searchView">
+            app:layout_anchor="@id/searchBar">
 
         </com.google.android.material.search.SearchView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

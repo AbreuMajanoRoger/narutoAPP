@@ -2,7 +2,9 @@ package com.example.narutoapp.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
@@ -28,14 +30,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun getRetrofit(): Retrofit {
-        return Retrofit
-            .Builder()
-            .baseUrl("https://narutodb.xyz/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-    }
 
 
 
@@ -53,12 +48,32 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
 
-       // searchByName("a")   // revisar en la manana
-        binding.searchView
+
+        binding.apply {
 
 
 
+           searchView.editText.setOnEditorActionListener( object:TextView.OnEditorActionListener{
+                override fun onEditorAction(
+                    v: TextView?,
+                    actionId: Int,
+                    event: KeyEvent?
+                ): Boolean {
+                    val text = v?.text.toString()
+                    searchView.hide()
+                    searchBar.setText(text)
+                   // searchByName(text) llamar funcion searchByName
+                    return true
+                }
+            })
         }
+
+
+
+
+
+
+
 
 
 
